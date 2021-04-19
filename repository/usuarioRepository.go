@@ -10,10 +10,9 @@ import (
 )
 
 type Client struct {
-	DB_MONGO           *mongo.Collection
-	DB_REDIS           *redis.Client
-	CTX                context.Context
-	TIME_MINUTES_REDIS int
+	DB_MONGO *mongo.Collection
+	DB_REDIS *redis.Client
+	CTX      context.Context
 }
 
 func (client Client) SetDataRedis() {

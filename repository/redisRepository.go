@@ -3,8 +3,6 @@ package repository
 import (
 	"encoding/json"
 	"fmt"
-	"math/rand"
-	"time"
 
 	"github.com/Junkes887/3bases-server-b/model"
 )
@@ -44,7 +42,7 @@ func (client Client) SaveRedis(id string, usuario model.UsuarioDecrypt) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	client.DB_REDIS.Set(id, p, time.Duration(rand.Intn(client.TIME_MINUTES_REDIS))*time.Minute)
+	client.DB_REDIS.Set(id, p, 0)
 }
 
 func (client Client) UpdateRedis(id string, usuario model.UsuarioDecrypt) {
@@ -54,7 +52,7 @@ func (client Client) UpdateRedis(id string, usuario model.UsuarioDecrypt) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	client.DB_REDIS.Set(id, p, time.Duration(rand.Intn(client.TIME_MINUTES_REDIS))*time.Minute)
+	client.DB_REDIS.Set(id, p, 0)
 }
 
 func (client Client) DeleteRedis(id string) {

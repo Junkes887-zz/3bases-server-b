@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"net/http"
 	"os"
-	"strconv"
 
 	"github.com/Junkes887/3bases-server-b/controller"
 	"github.com/Junkes887/3bases-server-b/database"
@@ -18,17 +17,10 @@ import (
 )
 
 func injects(collection *mongo.Collection, clientRedis *redis.Client, context context.Context) controller.Client {
-	time, err := strconv.Atoi(os.Getenv("TIME_MINUTES_REDIS"))
-
-	if err != nil {
-		fmt.Println(err)
-	}
-
 	rep := repository.Client{
-		DB_MONGO:           collection,
-		DB_REDIS:           clientRedis,
-		CTX:                context,
-		TIME_MINUTES_REDIS: time,
+		DB_MONGO: collection,
+		DB_REDIS: clientRedis,
+		CTX:      context,
 	}
 
 	controller := controller.Client{
